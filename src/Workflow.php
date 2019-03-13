@@ -62,6 +62,20 @@ class Workflow extends ResourceTool
     {
         return 'workflow';
     }
+    
+    /**
+     * Prepare the panel for JSON serialization.
+     *
+     * @return array
+     */
+    public function jsonSerialize()
+    {
+        return array_merge([
+            'component' => 'panel',
+            'name' => $this->name,
+            'showToolbar' => $this->showToolbar,
+        ], $this->meta());
+    }
 
     /**
      * @param array $workflow
